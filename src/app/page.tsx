@@ -1,4 +1,4 @@
-import Image from 'next/image';
+
 import styles from './page.module.css';
 import { Metadata } from 'next';
 
@@ -13,12 +13,10 @@ export default function Home() {
       <div className={styles.glow} />
 
       <div className={styles.content}>
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="/Logo_light_1.png"
           alt="The Web Labs Logo"
-          width={200}
-          height={200}
-          priority
           className={styles.logo}
         />
 
