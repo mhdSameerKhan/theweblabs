@@ -16,8 +16,8 @@ export default function Home() {
         <Image
           src="/Logo_light_1.png"
           alt="The Web Labs Logo"
-          width={80}
-          height={80}
+          width={200}
+          height={200}
           priority
           className={styles.logo}
         />
