@@ -3,38 +3,92 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #000000;
+  background-color: #050505;
   color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: pulse 6s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
 .content {
-  text-align: center;
-  animation: fadeIn 1.5s ease-out forwards;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  animation: fadeUp 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
+  transform: translateY(20px);
 }
 
-.title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  margin-bottom: 0.5rem;
+.logoWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+}
+
+.logo {
+  width: 100%;
+  height: auto;
 }
 
 .subtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(0.875rem, 2vw, 1rem);
   font-weight: 300;
-  color: #888888;
-  letter-spacing: 0.2em;
+  color: #a1a1aa;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
+.progressContainer {
+  width: 200px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30%;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px #ffffff;
+  animation: loading 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
+
+@keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes loading {
+  0% { transform: translateX(-100%); width: 20%; }
+  100% { transform: translateX(500%); width: 80%; }
 }
